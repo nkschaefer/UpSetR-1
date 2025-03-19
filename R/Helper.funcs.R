@@ -155,8 +155,10 @@ OverlayEdit <- function(data1, data2, start_col, num_sets, intersects, exp, inte
   }
   row_num <- as.integer(other_data$x)
   overlay_row <- data2[row_num, ]
-  new_freq <- nrow(temp_data)
-  overlay_row$freq <- new_freq
-  overlay_row$color <- inter_color
+  if (length(rownames(overlay_row)) > 0){
+    new_freq <- nrow(temp_data)
+    overlay_row$freq <- new_freq
+    overlay_row$color <- inter_color
+  }
   return(overlay_row)
 }
